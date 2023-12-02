@@ -1,4 +1,6 @@
 defmodule Day1 do
+  import Util
+
   @name_int ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
 
   @reverse_name_int ["eno", "owt", "eerht", "ruof", "evif", "xis", "neves", "thgie", "enin"]
@@ -26,9 +28,6 @@ defmodule Day1 do
   end
 
   defp cast_include_str_ints(row) do
-    row
-    |> dbg
-
     first_str_int =
       ~r/(one|two|three|four|five|six|seven|eight|nine|\d)/
       |> Regex.scan(row)
@@ -60,16 +59,4 @@ defmodule Day1 do
   end
 
   def convert_to_str_int_reverse(str_int), do: str_int
-
-  def parse_input(input, opts \\ []) do
-    split_by = Keyword.get(opts, :split_by, "\n")
-
-    if input =~ "priv" do
-      File.read!(input)
-    else
-      input
-    end
-    |> String.trim()
-    |> String.split(split_by, trim: true)
-  end
 end
